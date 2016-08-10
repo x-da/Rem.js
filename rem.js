@@ -5,14 +5,22 @@
     var html = document.getElementsByTagName('html')[0];
     var win = window;
     var doc = document;
-    var is_pc = !(navigator.userAgent.match(/iPhone|iPod|Android|ios|iPad|Windows Phone/));
     win.FreeUi = win.FreeUi || {};
     FreeUi['Rem'] = _rem;
     function _rem(psd_w, _min, _max) {
         //设计稿宽
         var psd_w = Number(psd_w) || 640;
+        //手机宽高比
+        var ratio = win.screen.width / win.screen.height;
         //手机实际物理像素宽
-        var win_w = Math.min(win.innerWidth, win.innerHeight);
+        var win_w =win.innerWidth;
+        //竖屏
+        if(!win.orientation){
+            win_w = Math.min(win.innerWidth,win.innerHeight);
+        }
+        if(win.orientation == 90 || win.orientation== -90 ){
+            win_w = win_w * ratio;
+        };
         var size = 100 / (psd_w / win_w);
         var _min = Number(_min) || 50;
         var _max = Number(_max) || 100;
@@ -28,11 +36,10 @@
         html.style.fontSize = size + 'px';
     }, 300);
     //非手机端窗口改变
-    if (is_pc) {
-        win.addEventListener('resize', function() {
-            _rem();
-        }, false);
-    };
+    // var event = 'orientation' in win ? 'orientationchange' : 'resize';
+    win.addEventListener('resize', function() {
+      _rem();
+    }, false);
     //窗口显示
     win.addEventListener('pageshow', function() {
         html.style.fontSize = size + 'px';
