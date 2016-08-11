@@ -1,5 +1,4 @@
-;
-(function(psd_w, _min, _max, full) {
+;(function(psd_w, _min, _max, full) {
     if (!-[1, ]) {
         return 0;
     };
@@ -27,9 +26,9 @@
             }
             //去除宽杂质像素,排除实际像素影响(UC浏览器)
             var impurity = 0;
-            if (window.innerWidth != window.screen.width && (window.screen.width / dpr) != window.innerWidth) {
-                var val1 = (window.screen.width - window.innerWidth);
-                var val2 = (window.screen.width / dpr - window.innerWidth);
+            if (win.innerWidth != win.screen.width && (win.screen.width / dpr) != win.innerWidth) {
+                var val1 = (win.screen.width - win.innerWidth);
+                var val2 = (win.screen.width / dpr - win.innerWidth);
                 impurity = val2 > 0 ? val2 : val1;
             };
             if (impurity > 1 && impurity <= 100) {
@@ -50,8 +49,8 @@
     setTimeout(function() {
         _rem();
     }, 300);
-    //非手机端窗口改变
-    var event = 'orientation' in win ? 'orientationchange' : 'resize';
+    //窗口改变
+    //var event = 'orientation' in win ? 'orientationchange' : 'resize';
     win.addEventListener('resize', function() {
         setTimeout(function() {
             _rem();
