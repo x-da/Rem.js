@@ -20,14 +20,15 @@
     function _rem(psd_w, _min, _max, full) {
         var win = window;
         var screen = win.screen;
-        //手机宽高比
+        //手机宽高比 短:高
         var ratio = Math.min(screen.width, screen.height) / Math.max(screen.width, screen.height);
         //设计稿宽
         var psd_w = Number(psd_w) || 640;
         //手机实际物理像素宽
         var win_w = win.innerWidth;
+        //短的width
         if (!full) {
-            var orientation = win.orientation || 0;
+            var orientation = win.orientation || window.screen.orientation.angle || 0;
             if (orientation == 90 || orientation == -90) {
                 //横屏
                 win_w = win_w * ratio;
@@ -66,9 +67,7 @@
     }, false);
     //窗口显示
     win.addEventListener('pageshow', function() {
-        setTimeout(function() {
-            _rem(psd_w, _min, _max, full);
-        }, 100);
+        _rem(psd_w, _min, _max, full);
     }, false);
     //文档加载完成
     if ("complete" === doc.readyState) {
