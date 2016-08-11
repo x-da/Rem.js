@@ -8,13 +8,13 @@
     var doc = document;
     var dpr = window.devicePixelRatio || 1;
     //手机宽高比
-    var screen = win.screen;
-    var ratio = Math.min(screen.width, screen.height) / Math.max(screen.width, screen.height);
     win.FreeUi = win.FreeUi || {};
     FreeUi['Rem'] = _rem;
 
     function _rem(psd_w, _min, _max) {
         var win = window;
+        var screen = win.screen;
+        var ratio = Math.min(screen.width, screen.height) / Math.max(screen.width, screen.height);
         //设计稿宽
         var psd_w = Number(psd_w) || 640;
         //手机实际物理像素宽
@@ -53,7 +53,7 @@
     }, 300);
     //非手机端窗口改变
     var event = 'orientation' in win ? 'orientationchange' : 'resize';
-    win.addEventListener(event, function() {
+    win.addEventListener('resize', function() {
         setTimeout(function() {
             _rem();
         }, 100);
