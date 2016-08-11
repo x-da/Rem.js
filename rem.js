@@ -1,18 +1,26 @@
-;(function(psd_w, _min, _max, full) {
+;(function() {
     if (!-[1, ]) {
         return 0;
     };
     var html = document.getElementsByTagName('html')[0];
+    var script = document.getElementsByTagName('script')[0];
+    //参数
+    var psd_w = script.getAttribute('fu-psd');
+    var _min = script.getAttribute('fu-min');
+    var _max =  script.getAttribute('fu-max');
+    var full =  script.getAttribute('fu-full');
+    //常量
     var win = window;
     var doc = document;
     var dpr = window.devicePixelRatio || 1;
-    //手机宽高比
+    //与FreeUi框架会师
     win.FreeUi = win.FreeUi || {};
     FreeUi['Rem'] = _rem;
 
-    function _rem(psd_w, _min, _max) {
+    function _rem(psd_w, _min, _max, full) {
         var win = window;
         var screen = win.screen;
+        //手机宽高比
         var ratio = Math.min(screen.width, screen.height) / Math.max(screen.width, screen.height);
         //设计稿宽
         var psd_w = Number(psd_w) || 640;
@@ -44,27 +52,27 @@
         return size;
     };
     //立即执行
-    var size = _rem();
+    var size = _rem(psd_w, _min, _max, full);
     //某些低性能安卓机延迟0.3s执行
     setTimeout(function() {
-        _rem();
+        _rem(psd_w, _min, _max, full);
     }, 300);
     //窗口改变
     //var event = 'orientation' in win ? 'orientationchange' : 'resize';
     win.addEventListener('resize', function() {
         setTimeout(function() {
-            _rem();
+            _rem(psd_w, _min, _max, full);
         }, 100);
     }, false);
     //窗口显示
     win.addEventListener('pageshow', function() {
-        _rem();
+        _rem(psd_w, _min, _max, full);
     }, false);
     //文档加载完成
     if ("complete" === doc.readyState) {
-        _rem();
+        _rem(psd_w, _min, _max, full);
     };
     doc.addEventListener("DOMContentLoaded", function() {
-        _rem();
+        _rem(psd_w, _min, _max, full);
     }, false);
 })();
