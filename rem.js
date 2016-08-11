@@ -66,7 +66,9 @@
     }, false);
     //窗口显示
     win.addEventListener('pageshow', function() {
-        _rem(psd_w, _min, _max, full);
+        setTimeout(function() {
+            _rem(psd_w, _min, _max, full);
+        }, 100);
     }, false);
     //文档加载完成
     if ("complete" === doc.readyState) {
