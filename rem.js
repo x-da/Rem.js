@@ -1,5 +1,5 @@
 ;
-(function(psd_w, _min, _max) {
+(function(psd_w, _min, _max, full) {
     if (!-[1, ]) {
         return 0;
     };
@@ -19,24 +19,23 @@
         var psd_w = Number(psd_w) || 640;
         //手机实际物理像素宽
         var win_w = win.innerWidth;
-        var orientation = win.orientation || 0;
-        if (orientation == 90 || orientation == -90) {
-            //横屏
-            win_w = win_w * ratio;
+        if (!full) {
+            var orientation = win.orientation || 0;
+            if (orientation == 90 || orientation == -90) {
+                //横屏
+                win_w = win_w * ratio;
+            }
+            //去除宽杂质像素,排除实际像素影响(UC浏览器)
+            var impurity = 0;
+            if (window.innerWidth != window.screen.width && (window.screen.width / dpr) != window.innerWidth) {
+                var val1 = (window.screen.width - window.innerWidth);
+                var val2 = (window.screen.width / dpr - window.innerWidth);
+                impurity = val2 > 0 ? val2 : val1;
+            };
+            if (impurity > 1 && impurity <= 100) {
+                win_w += impurity
+            };
         }
-
-        //去除宽杂质像素,排除实际像素影响(UC浏览器)
-        var impurity = 0;
-        if (window.innerWidth != window.screen.width && (window.screen.width / dpr) != window.innerWidth) {
-
-            var val1 = (window.screen.width - window.innerWidth);
-            var val2 = (window.screen.width / dpr - window.innerWidth);
-            impurity = val2 > 0 ? val2 : val1;
-        };
-        if (impurity > 1 && impurity <= 100) {
-            win_w += impurity
-        };
-
         var size = 100 / (psd_w / win_w);
         var _min = Number(_min) || 50;
         var _max = Number(_max) || 100;
