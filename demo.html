@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	<script type="text/javascript" src="rem.js"></script>
+	<style>
+	body{font-size: 0.24rem;color:#666;padding: 0;margin: 0;}
+	.g-layout{max-width: 640px; margin-left: auto; margin-right: auto;}
+	.g-mb20{margin-bottom: 0.2rem;}
+	.u-txt{line-height: 1.4; font-size: 0.24rem;color:#333; padding: 0.2rem;}
+	.u-FU_btn{display:inline-block;overflow:hidden;vertical-align:middle;text-align:center;color:#fff;position:relative;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-webkit-transition:background 0.2s linear;-ms-transition:background 0.2s linear;-moz-transition:background 0.2s linear;-o-transition:background 0.2s linear;transition:background 0.2s linear;text-decoration:none;font-weight:360;outline:none;padding:0 1em;height:0.6rem;line-height:0.6rem;font-size:0.3rem;background-color:#2185D0;border:1px solid #2185D0;border-radius:3px;color:#fff}
+.u-FU_btn:hover{background-color:#1678c2;border-color:#1678c2}
+.u-FU_btn:active{background-color:#1a69a4;border-color:#1a69a4}
+	.u-FU_btn.s-mid{display: block; margin:0.1rem auto;}
+
+	::-webkit-scrollbar-track-piece{background-color:transparent;-webkit-border-radius:0;}
+::-webkit-scrollbar-thumb{background-color:#999;-webkit-border-radius:6px;}
+::-webkit-scrollbar-thumb:hover{background-color:#9f9f9f;-webkit-border-radius:6px;}
+
+
+	</style>
+</head>
+<body>
+	<div class="g-layout">
+		<div class="u-FU_btn g-mb20 s-mid">按钮哦</div>
+		<div class="u-txt">
+			一、可加参数
+			<br />
+			1、fu-psd：设计稿宽度（默认值640）
+			<br />
+			2、fu-min：html根元素最小字体大小（默认值50）
+			<br />
+			3、fu-max：html根元素最大字体大小（默认值100）
+			<br />
+			4、fu-full：是否强制充满屏幕（默认undefined）
+			<br />
+			PS：在引用rem.js的&lt;script&gt;标签里增加
+			<br />
+			<br />
+			二、设计稿与CSS尺寸平滑转换
+			<br />
+			设计稿中的10px换算成CSS的0.1rem。
+			<br />
+			<br />
+			三、横竖屏字体大小不变，采取最佳字体大小
+			<br />
+			使横屏页面看起来不会感觉太大，无法使用。
+			<br />
+			（但给与fu-full属性时，该条则失效）
+			<br />
+			<br />
+			四、解决变态强迫症
+			<br />
+			在chrome手机模拟器中切换手机或PC都能字体大小平滑转换
+			<br />
+			<br />
+		</div>
+	</div>
+</body>
+</html>
