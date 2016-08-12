@@ -4,13 +4,13 @@
 几乎兼容所有移动设备。<br>
 # 使用亮点
 一、可加参数<br>
-/<script type="text/javascript" src="js/rem.js">/</script><br>
+/<script type="text/javascript" src="js/rem.js"/>/</script/><br>
 1、fu-psd：设计稿宽度（默认值640）<br>
 2、fu-min：html根元素最小字体大小（默认值50）<br>
 3、fu-max：html根元素最大字体大小（默认值100）<br>
 4、fu-full：是否强制充满屏幕（默认undefined）<br>
 即：<br>
-/<script type="text/javascript" src="js/rem.js" fu-psd="640" fu-min="50" fu-max="100">/</script><br><br>
+/<script type="text/javascript" src="js/rem.js" fu-psd="640" fu-min="50" fu-max="100"/>/</script/><br><br>
 
 二、设计稿与CSS尺寸平滑转换<br>
 设计稿中的10px换算成CSS的0.1rem。<br><br>
