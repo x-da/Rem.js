@@ -7,8 +7,8 @@
     //参数
     var psd_w = script.getAttribute('fu-psd');
     var _min = script.getAttribute('fu-min');
-    var _max =  script.getAttribute('fu-max');
-    var full =  script.getAttribute('fu-full');
+    var _max = script.getAttribute('fu-max');
+    var full = script.getAttribute('fu-full');
     //常量
     var win = window;
     var doc = document;
@@ -32,18 +32,8 @@
             if (orientation == 90 || orientation == -90) {
                 //横屏
                 win_w = win_w * ratio;
-            }
-            //去除宽杂质像素,排除实际像素影响(UC浏览器)
-            var impurity = 0;
-            if (win.innerWidth != win.screen.width && (win.screen.width / dpr) != win.innerWidth) {
-                var val1 = (win.screen.width - win.innerWidth);
-                var val2 = (win.screen.width / dpr - win.innerWidth);
-                impurity = val2 > 0 ? val2 : val1;
             };
-            if (impurity > 1 && impurity <= 100) {
-                win_w += impurity
-            };
-        }
+        };
         var size = 100 / (psd_w / win_w);
         var _min = Number(_min) || 50;
         var _max = Number(_max) || 100;
@@ -59,12 +49,16 @@
         _rem(psd_w, _min, _max, full);
     }, 300);
     //窗口改变
-    //var event = 'orientation' in win ? 'orientationchange' : 'resize';
-    win.addEventListener('resize', function() {
-        setTimeout(function() {
-            _rem(psd_w, _min, _max, full);
-        }, 100);
-    }, false);
+    var is_orientation = 'orientation' in win;
+    var event = is_orientation ? 'orientationchange' : 'resize';
+    var time = is_orientation ? 150 : 0;
+    if (!is_orientation) {
+        win.addEventListener(event, function() {
+            setTimeout(function() {
+                _rem(psd_w, _min, _max, full);
+            }, time)
+        }, false);
+    };
     //窗口显示
     win.addEventListener('pageshow', function() {
         _rem(psd_w, _min, _max, full);
