@@ -28,7 +28,8 @@
         var win_w = win.innerWidth;
         //短的width
         if (!full) {
-            var orientation = win.orientation || window.screen.orientation.angle || 0;
+            var angle= window.screen.orientation ? window.screen.orientation.angle : 0;
+            var orientation = win.orientation || angle || 0;
             if (orientation == 90 || orientation == -90) {
                 //横屏
                 win_w = win_w * ratio;
