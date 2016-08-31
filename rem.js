@@ -41,7 +41,9 @@
         var _max = Number(_max) || 100;
         size = size >= _max ? _max : size;
         size = size <= _min ? _min : size;
-        html.style.fontSize = size + 'px';
+        if(html.style.fontSize != size+'px'){
+            html.style.fontSize = size + 'px';
+        };
         return size;
     };
     //立即执行
@@ -52,7 +54,8 @@
     }, 300);
 
     //窗口改变
-    var is_orientation = 'orientation' in win;
+    var ua= navigator.userAgent;
+    var is_orientation = Boolean('orientation' in win) && Boolean(ua.match(/iPhone|iPod|Android|ios|iPad|Windows Phone/));
     var event = is_orientation ? 'orientationchange' : 'resize';
     var time = is_orientation ? 300 : 100;
     if (!is_orientation || full) {
