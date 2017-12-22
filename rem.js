@@ -1,14 +1,22 @@
+/*!
+ * rem.js v1.0.1
+ * author:x-da
+ * github:https://github.com/x-da/Rem.js
+ */
 ;(function() {
     if (!-[1, ]) {
         return 0;
     };
     var html = document.getElementsByTagName('html')[0];
-    var script = document.getElementsByTagName('script')[0];
+    var script = document.getElementsByTagName('script');
+    var script_len = script.length;
+    var script_last = script[script_len - 1];
+
     //参数
-    var psd_w = script.getAttribute('fu-psd');
-    var _min = script.getAttribute('fu-min');
-    var _max = script.getAttribute('fu-max');
-    var full = script.getAttribute('fu-full');
+    var psd_w = script_last.getAttribute('fu-psd');
+    var _min = script_last.getAttribute('fu-min');
+    var _max = script_last.getAttribute('fu-max');
+    var full = script_last.getAttribute('fu-full');
     //常量
     var win = window;
     var doc = document;
@@ -23,7 +31,7 @@
     function _rem(psd_w, _min, _max, full) {
         var win = window;
         //设计稿宽
-        var psd_w = Number(psd_w) || 640;
+        var _psd_w = Number(psd_w) || 640;
         //手机实际物理像素宽
         var win_w = html.getBoundingClientRect().width;
         //短的width
@@ -36,7 +44,7 @@
             };
 
         };
-        var size = 100 / (psd_w / win_w);
+        var size = 100 / (_psd_w / win_w);
         var _min = Number(_min) || 50;
         var _max = Number(_max) || 100;
         size = size >= _max ? _max : size;
