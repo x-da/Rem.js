@@ -1,4 +1,4 @@
-# rem.js
+# rem.js V1.0.1
 demo地址：[http://freeui.org/demo/rem/](http://freeui.org/demo/rem/)<br>
 移动端rem字体差点完美解决方案。<br>
 设计稿与尺寸平滑转换。<br>
@@ -19,6 +19,11 @@ demo地址：[http://freeui.org/demo/rem/](http://freeui.org/demo/rem/)<br>
 
 四、解决变态强迫症<br>
 在chrome手机模拟器中切换手机或PC都能字体大小平滑转换<br><br>
+
+#使用方法
+在<head>标签内引用：<br>
+<script type="text/javascript" src="http://freeui.org/demo/rem/js/rem.js" fu-psd="640"></script><br>
+
 # 若设计稿不是640PX咋办？
 1、将设计稿强制修改图像大小为640px，高度等比例缩放<br>
 2、修改源代码（或者传参）在闭包内传入psd_w参数，即为设计稿参数。<br>
